@@ -156,18 +156,18 @@
   var elCta      = overlay.querySelector('#introCta');
 
   async function runSequence() {
-    await delay(prefersReduced ? 150 : 620);
+    await delay(prefersReduced ? 100 : 400);
     await Promise.all([
-      type(elName1, 'OM', prefersReduced ? 0 : 350),
-      type(elName2, 'KUSHWAHA', prefersReduced ? 0 : 500)
+      type(elName1, 'OM', prefersReduced ? 0 : 250),
+      type(elName2, 'KUSHWAHA', prefersReduced ? 0 : 300)
     ]);
-    await delay(prefersReduced ? 40 : 150);
-    await type(elRole, 'SOFTWARE DEVELOPER \u2022 AI ENTHUSIAST', prefersReduced ? 0 : 600);
-    await delay(prefersReduced ? 40 : 150);
-    await type(elWelcome, 'Welcome to my digital workspace.', prefersReduced ? 0 : 1050);
-    await delay(prefersReduced ? 40 : 150);
-    await type(elSub, 'Building software, exploring AI, and turning ideas into real products.', prefersReduced ? 0 : 1450);
-    await delay(prefersReduced ? 40 : 150);
+    await delay(prefersReduced ? 40 : 80);
+    await type(elRole, 'SOFTWARE DEVELOPER \u2022 AI ENTHUSIAST', prefersReduced ? 0 : 400);
+    await delay(prefersReduced ? 40 : 80);
+    await type(elWelcome, 'Welcome to my digital workspace.', prefersReduced ? 0 : 800);
+    await delay(prefersReduced ? 40 : 80);
+    await type(elSub, 'Building software, exploring AI, and turning ideas into real products.', prefersReduced ? 0 : 1000);
+    await delay(prefersReduced ? 40 : 80);
     elCta.classList.add('visible');
   }
 
