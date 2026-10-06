@@ -794,6 +794,16 @@ ul {
   margin: 0 auto 36px;
 }
 
+.hero-subtitle {
+    max-width: 700px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.6;
+    word-break: normal;
+    overflow-wrap: normal;
+}
+
 .hero-buttons {
   display: flex;
   flex-wrap: wrap;
