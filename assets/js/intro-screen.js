@@ -13,7 +13,7 @@
   overlay.setAttribute('role', 'presentation');
   overlay.setAttribute('aria-hidden', 'true');
 
-  overlay.innerHTML = '<canvas id="introCanvas"></canvas><div class="intro-content"><div class="intro-line intro-name" id="introName"><div class="intro-name-line" id="introNameLine1"></div><div class="intro-name-line" id="introNameLine2"></div></div><div class="intro-line intro-role" id="introRole"></div><div class="intro-line intro-welcome" id="introWelcome"></div><div class="intro-line intro-sub" id="introSub"></div><div class="intro-cta" id="introCta"><span class="intro-cta-dot"></span><span class="intro-cta-text">Tap anywhere to enter</span><span class="intro-cta-arrow">&#x2192;</span></div></div>';
+  overlay.innerHTML = '<canvas id="introCanvas"></canvas><div class="intro-content"><div class="intro-line intro-name" id="introName"><div class="intro-name-line" id="introNameLine1"></div><div class="intro-name-line" id="introNameLine2"></div></div><div class="intro-line intro-role" id="introRole"></div><div class="intro-line intro-welcome" id="introWelcome"></div><div class="intro-line intro-sub hero-subtitle" id="introSub"></div><div class="intro-cta" id="introCta"><span class="intro-cta-dot"></span><span class="intro-cta-text">Tap anywhere to enter</span><span class="intro-cta-arrow">&#x2192;</span></div></div>';
 
   document.body.insertBefore(overlay, document.body.firstChild);
   document.body.classList.add('intro-active');
@@ -72,16 +72,31 @@
       var mid = Math.floor(total / 2);
       var leftSpans = [], rightSpans = [];
 
+      var currentWord = null;
+
       chars.forEach(function(ch, i) {
-        var span = document.createElement('span');
-        span.className = 'intro-char';
-        span.textContent = ch === ' ' ? '\u00A0' : ch;
-        span.style.opacity = '0';
-        span.style.display = 'inline-block';
-        span.style.transform = i < mid ? 'translateX(-10px)' : 'translateX(10px)';
-        el.appendChild(span);
-        if (i < mid) leftSpans.push(span);
-        else rightSpans.push(span);
+        if (ch === ' ') {
+          currentWord = null;
+          var spaceSpan = document.createElement('span');
+          spaceSpan.className = 'intro-space';
+          spaceSpan.innerHTML = ' ';
+          el.appendChild(spaceSpan);
+        } else {
+          if (!currentWord) {
+            currentWord = document.createElement('span');
+            currentWord.className = 'intro-word';
+            el.appendChild(currentWord);
+          }
+          var span = document.createElement('span');
+          span.className = 'intro-char';
+          span.textContent = ch;
+          span.style.opacity = '0';
+          span.style.display = 'inline-block';
+          span.style.transform = i < mid ? 'translateX(-10px)' : 'translateX(10px)';
+          currentWord.appendChild(span);
+          if (i < mid) leftSpans.push(span);
+          else rightSpans.push(span);
+        }
       });
 
       if (total === 0) { resolve(); return; }
@@ -109,7 +124,23 @@
     });
   }
 
-  function revealInstant(el, text) { el.textContent = text; return Promise.resolve(); }
+  function revealInstant(el, text) {
+    el.innerHTML = '';
+    var words = text.split(' ');
+    words.forEach(function(word, idx) {
+      var wordSpan = document.createElement('span');
+      wordSpan.className = 'intro-word';
+      wordSpan.textContent = word;
+      el.appendChild(wordSpan);
+      if (idx < words.length - 1) {
+        var spaceSpan = document.createElement('span');
+        spaceSpan.className = 'intro-space';
+        spaceSpan.innerHTML = ' ';
+        el.appendChild(spaceSpan);
+      }
+    });
+    return Promise.resolve();
+  }
   function delay(ms) { return new Promise(function(r) { setTimeout(r, ms); }); }
 
   var type = prefersReduced
