@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Om Kushwaha - Resume | Software Developer & Full Stack AI Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060913;
+      --card: #0c1428;
+      --crimson: #0070f3;
+      --electric-cyan: #38bdf8;
+      --crimson-soft: rgba(0, 112, 243, 0.12);
+      --text: #ffffff;
+      --text-muted: #94a3b8;
+      --border: rgba(56, 189, 248, 0.15);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+    .resume-container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+    .action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .back-link {
+      color: var(--crimson);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-group {
+      display: flex;
+      gap: 12px;
+    }
+    .btn {
+      padding: 10px 20px;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary {
+      background: var(--crimson);
+      color: #fff;
+      border: 1px solid var(--crimson);
+    }
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 24px;
+      margin-bottom: 28px;
+    }
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.4rem;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+    h1 span { color: var(--crimson); }
+    .title-sub {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--crimson);
+      margin-top: 4px;
+    }
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 14px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .contact-row a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .contact-row a:hover {
+      color: var(--crimson);
+    }
+    .section {
+      margin-bottom: 28px;
+    }
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title::before {
+      content: '';
+      width: 4px;
+      height: 16px;
+      background: var(--crimson);
+      border-radius: 2px;
+    }
+    .entry {
+      margin-bottom: 18px;
+    }
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #fff;
+    }
+    .entry-sub {
+      color: var(--crimson);
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .entry-date {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 400;
+    }
+    .entry-desc {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+    ul.bullets {
+      margin-left: 20px;
+      margin-top: 6px;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+    ul.bullets li { margin-bottom: 4px; }
+    .skill-category {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+    .skill-label {
+      font-weight: 700;
+      color: #fff;
+    }
+    .skill-items {
+      color: var(--text-muted);
+    }
+
+    @media print {
+      body { background: #fff; color: #111; padding: 0; }
+      .resume-container { box-shadow: none; border: none; padding: 0; }
+      .action-bar { display: none; }
+      h1 { color: #111; }
+      h1 span { color: #0056cc; }
+      .title-sub { color: #0056cc; }
+      .section-title { color: #111; border-color: #ddd; }
+      .section-title::before { background: #0056cc; }
+      .entry-header { color: #111; }
+      .entry-sub { color: #0056cc; }
+      .entry-desc, ul.bullets, .skill-items, .contact-row { color: #444; }
+      .skill-label { color: #111; }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume-container">
+    <div class="action-bar">
+      <a href="../../index.html" class="back-link">← Back to Portfolio</a>
+      <div class="btn-group">
+        <button onclick="window.print()" class="btn btn-outline">🖨 Print / Save PDF</button>
+        <a href="Om_Kushwaha_Resume.docx" download class="btn btn-primary">⬇ Download Word (.docx)</a>
+      </div>
+    </div>
+
+    <header>
+      <h1>OM <span>KUSHWAHA</span></h1>
+      <div class="title-sub">Full Stack Developer | Frontend Engineer | Backend Developer | AI Enthusiast</div>
+      <div class="contact-row">
+        <span>📍 Mumbai, Dahisar(E), India</span>
+        <span>📞 +91 7738147080</span>
+        <span>✉ <a href="mailto:omkushw01@gmail.com">omkushw01@gmail.com</a></span>
+        <span>💻 <a href="https://github.com/omkushw02" target="_blank">github.com/omkushw02</a></span>
+        <span>🔗 <a href="https://www.linkedin.com/in/om-kushwaha-9b8a64411" target="_blank" rel="noopener noreferrer">linkedin.com/in/om-kushwaha-9b8a64411</a></span>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2 class="section-title">Professional Summary</h2>
+      <p class="entry-desc">
+        B.Sc. IT graduate (University of Mumbai, 2026) with an outstanding <strong>9.12 CGPA</strong>, currently pursuing M.Sc. in Artificial Intelligence. Hands-on experience building cross-platform mobile and web applications using React Native, React.js, Django, and Python. Proven ability to architect end-to-end solutions from database design to production-ready UI with a track record of shipping features that solve real-world problems.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skill-category">
+        <span class="skill-label">Languages:</span>
+        <span class="skill-items">Python, JavaScript (ES6+), C++, SQL, HTML5, CSS3</span>
+      </div>
+      <div class="skill-category">
+        <span class="skill-label">Frontend & Mobile:</span>
+        <span class="skill-items">React Native, React.js, Expo CLI, Responsive UI, State Management, Modern CSS3</span>
+      </div>
+      <div class="skill-category">
+        <span class="skill-label">Backend & APIs:</span>
+        <span class="skill-items">Django, Django REST Framework, RESTful APIs, Token & JWT Authentication</span>
+      </div>
+      <div class="skill-category">
+        <span class="skill-label">Databases:</span>
+        <span class="skill-items">MySQL, SQLite — schema design, normalization, query optimization</span>
+      </div>
+      <div class="skill-category">
+        <span class="skill-label">AI & Core Competencies:</span>
+        <span class="skill-items">Applied AI, Prompt Engineering, Vector Search, Problem Solving, Agile Workflow</span>
+      </div>
+      <div class="skill-category">
+        <span class="skill-label">Tools & VCS:</span>
+        <span class="skill-items">Git, GitHub, VS Code, Postman, Expo CLI, Android Studio</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Featured Projects</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span>Leftover Food Donation Platform</span>
+          <span class="entry-date">React Native · Django · SQLite</span>
+        </div>
+        <div class="entry-sub">Full Stack Mobile Application</div>
+        <ul class="bullets">
+          <li>Architected and deployed a full-stack mobile application connecting food donors with NGOs, enabling real-time coordination across the entire donation lifecycle — posting, request handling, and fulfillment.</li>
+          <li>Engineered a RESTful Django backend with SQLite data layer, designing normalized schemas and API endpoints that reduced redundant data calls and improved query efficiency.</li>
+          <li>Built multi-role user management system supporting separate donor and NGO flows with distinct dashboards, authentication, and access controls in React Native.</li>
+          <li>Delivered end-to-end feature ownership: requirements gathering → UI/UX design → backend integration → testing independently.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span>StudyMate AI</span>
+          <span class="entry-date">React Native · Python · Gemini API</span>
+        </div>
+        <div class="entry-sub">Intelligent Student Learning Assistant</div>
+        <ul class="bullets">
+          <li>Engineered an AI study app converting complex textbooks and lectures into spaced-repetition flashcards and concise digests.</li>
+          <li>Integrated contextual AI tutor responding to syllabus-specific questions with high precision and guardrailed answers.</li>
+          <li>Implemented offline-first mobile caching with smooth cross-platform performance.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span>Personal Appointment Manager</span>
+          <span class="entry-date">React.js · Django · SQLite</span>
+        </div>
+        <div class="entry-sub">Desktop Scheduling & Client Analytics System</div>
+        <ul class="bullets">
+          <li>Developed full-stack booking system eliminating appointment conflicts with slot-locking logic.</li>
+          <li>Created administrative dashboards displaying booking analytics, appointment history, and client records.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Education</h2>
+      <div class="entry">
+        <div class="entry-header">
+          <span>Master of Science (M.Sc.) in Artificial Intelligence</span>
+          <span class="entry-date">Currently Pursuing</span>
+        </div>
+        <div class="entry-sub">KES' B. K. Shroff College, University of Mumbai</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span>Bachelor of Science (B.Sc.) in Information Technology</span>
+          <span class="entry-date">Graduated May 2026</span>
+        </div>
+        <div class="entry-sub">Nirmala Memorial Foundation College, University of Mumbai</div>
+        <p class="entry-desc"><strong>Cumulative CGPA: 9.12 / 10</strong> (Sem 1: 8.70 · Sem 2: 9.40 · Sem 3: 9.50 · Sem 4: 9.50 · Sem 5: 8.70 · Sem 6: 8.90)</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span>Higher Secondary Certificate (HSC)</span>
+          <span class="entry-date">2023</span>
+        </div>
+        <div class="entry-sub">Matruchhaya College | 56.50%</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span>Secondary School Certificate (SSC)</span>
+          <span class="entry-date">2021</span>
+        </div>
+        <div class="entry-sub">Shree Vishwakarma High School | 68.40%</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Certifications</h2>
+      <ul class="bullets">
+        <li><strong>Python Programming Certificate</strong> — MATRIX INSTITUTE</li>
+        <li><strong>Google AI Certification</strong> — GOOGLE / COURSERA</li>
+        <li><strong>Google AI Essentials</strong> — GOOGLE / COURSERA</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Personal Attributes & Interests</h2>
+      <div class="skill-category">
+        <span class="skill-label">Languages Known:</span>
+        <span class="skill-items">English, Hindi, Marathi</span>
+      </div>
+      <div class="skill-category">
+        <span class="skill-label">Interests:</span>
+        <span class="skill-items">Combat Sports, Travelling, Music, Tech Reading & AI Research</span>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
